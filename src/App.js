@@ -12,7 +12,8 @@ class App extends Component {
 			markdown: "",
 			displayPreview: "live"
 		};
-		
+
+		this.fileInput = React.createRef();
 	}
 
 	handleEditorChange = event => {
@@ -29,7 +30,7 @@ class App extends Component {
 	};
 
 	handleFileInputSubmit = event => {
-		const file = event;
+		const file = this.fileInput.current.files[0];
 
 		let fileReader = new FileReader();
 
@@ -65,7 +66,7 @@ class App extends Component {
 				<Button type="button" onClick={this.handleClearPreviewClick}>
 					Clear Preview
 				</Button>
-				<FileInput onChange={this.handleFileInputSubmit} />
+				<Input ref={this.fileInput} onChange={this.handleFileInputSubmit} />
 			</div>
 		);
 	}
@@ -119,31 +120,11 @@ const Button = props => {
 	);
 };
 
-class FileInput extends Component {
-	constructor(props) {
-		super(props);
-
-		this.fileInput = React.createRef();
-	}
-
-	handleChange = () => {
-		this.props.onChange(this.fileInput.current.files[0]);
-	};
-
-	render() {
-		return (
-			<div>
-				<label for="file"></label>
-				<input
-					type="file"
-					id="file"
-					ref={this.fileInput}
-					onChange={this.handleChange}
-				/>
-			</div>
-		);
-	}
-}
-
+const Input = React.forwardRef((props, ref) => (
+	<div>
+		<label for="file"></label>
+		<input type="file" id="file" ref={ref} onChange={props.onChange} />
+	</div>
+));
 
 export default App;
