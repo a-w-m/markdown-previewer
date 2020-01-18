@@ -1,0 +1,11 @@
+@mixin for-phone-landscape-up {
+	@media (min-width: 560px) and (max-width: 899px) and (orientation: landscape) {
+		@content;
+	}
+}
+
+@mixin for-desktop-up {
+	@media (min-width: 1024px) {
+		@content;
+	}
+}
