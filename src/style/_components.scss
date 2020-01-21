@@ -1,23 +1,20 @@
-@mixin Editor {
-  height: 100%;
-  border: 0.01rem solid $border-color;
-}
-
 @mixin Textarea {
-  width: 100%;
-  padding: 0;
-  border-image: none;
-  border-width: 0;
-  border: none;
+  padding: 0.25rem;
+  border: 0.05rem solid $border-color;
+  background-color: $editor-bg-color;
+  color: $editor-text-color;
   resize: none;
   outline: none;
+  scrollbar-color: $button-text-color white;
+  scrollbar-width: thin;
+  border-radius: 0;
 }
 
 @mixin Button {
   background-color: $button-bg-color;
   border: 0.05rem solid $border-color;
   color: $button-text-color;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   text-decoration: none;
   -webkit-appearance: none;
   width: 3rem;
@@ -29,5 +26,25 @@
   background-color: $button-bg-color;
   color: $button-text-color;
   border: 0.05rem solid $border-color;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
+}
+
+/*Scrollbar for chrome and safari*/
+
+.preview::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track {
+  border: 0.01rem solid transparent;
+  background-clip: content-box;
+}
+
+.preview::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+  width: 0.4rem;
+  height: 0;
+}
+
+.preview::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+  border: 1px solid $button-text-color;
+  background: $button-text-color;
 }

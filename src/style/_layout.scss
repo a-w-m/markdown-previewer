@@ -3,7 +3,7 @@ body,
 #root {
   height: 100%;
   font-family: "Work Sans", sans-serif;
-  color: $text-color;
+  color: $preview-text-color;
   font-size: $root-font;
 }
 
@@ -13,17 +13,24 @@ body {
 
 .App {
   display: grid;
-  grid-template-rows: 3rem 1fr 2.5rem 1fr .25rem;
+  grid-template-rows: 3rem 1fr 2.5rem 1fr 0.75rem;
   grid-template-columns: 1fr;
   height: 100%;
   font-size: 0.75rem;
 
-  @include for-desktop-up {
+  @include for-tablet-up {
     display: grid;
-    grid-template-rows: 2.5rem 1fr 1rem;
+    grid-template-rows: 5.5rem 0.95fr auto;
     grid-template-columns: 1fr 1fr;
-    height: 100%;
     font-size: 1rem;
+  }
+
+  @include for-large-phone-landscape-up {
+    grid-template-rows: 4rem 0.95fr auto;
+  }
+
+  @include for-phone-landscape-up {
+    grid-template-rows: 3rem 1fr 2.5rem 1fr 0.5rem;
   }
 }
 
@@ -33,22 +40,22 @@ body {
   justify-self: start;
   align-self: end;
   margin-left: 1rem;
-  font-size: .95rem;
+  font-size: 0.95rem;
   font-weight: 600;
 
-  @include for-desktop-up {
+  @include for-tablet-up {
     grid-area: 1/1/2/2;
     justify-self: start;
     align-self: end;
-	margin-left: 1rem;
-	font-size: 1.25rem;
+    margin-left: 1rem;
+    font-size: 1.25rem;
   }
 }
 
 .header-preview {
   grid-area: 3/1/4/2;
 
-  @include for-desktop-up {
+  @include for-tablet-up {
     grid-area: 1/2/2/3;
   }
 }
@@ -60,13 +67,8 @@ body {
   align-self: end;
   margin-right: 1rem;
 
-  @include for-desktop-up {
-    @include Button;
-    justify-self: end;
-    grid-area: 1/1/2/2;
-    align-self: end;
-	margin-right: 1rem;
-	margin-bottom: .1rem;
+  @include for-tablet-up {
+    margin-bottom: 0.1rem;
   }
 }
 
@@ -76,7 +78,7 @@ body {
   align-self: end;
   margin-right: 1rem;
 
-  @include for-desktop-up {
+  @include for-tablet-up {
     grid-area: 1/2/2/3;
     justify-self: end;
     align-self: end;
@@ -97,56 +99,52 @@ select {
   align-self: end;
   display: none;
 
+  @include for-tablet-up{
+	display: none;
+}
+
   @include for-desktop-up {
     grid-area: 1/1/2/2;
     justify-self: end;
     align-self: end;
-    visibility: visible;
+    display: none;
   }
+
+ 
 }
 
 .editor {
-  @include Editor;
+  @include Textarea;
   font-size: 0.75rem;
   display: flex;
   grid-area: 2/1/3/2;
   margin-left: 1rem;
   margin-right: 1rem;
-  margin-top: .1rem;
+  margin-top: 0.2rem;
 
-
-  @include for-desktop-up {
-    @include Editor;
-    display: flex;
+  @include for-tablet-up {
     grid-area: 2/1/3/2;
-    margin-left: 1rem;
-    margin-right: 1rem;
-	font-size: 1rem;
-	margin-top: auto;
-	
+    font-size: 1rem;
   }
 }
 
-textarea {
-  @include Textarea;
-  margin: 0.05rem;
-  padding: 0 .25rem;
-  font-size: .75rem;
-}
-
 .preview {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   grid-area: 4/1/5/1;
   text-align: start;
   border: 0.01rem solid $border-color;
   overflow: scroll;
-  height: 100%;
   margin-right: 1rem;
   margin-left: 1rem;
+  margin-top: 0.1rem;
   padding: 0 0.25rem;
+  scrollbar-color: $button-text-color white;
+  scrollbar-width: thin;
 
-  @include for-desktop-up {
+  @include for-tablet-up {
     grid-area: 2/2/3/3;
+    font-size: 0.75rem;
+    margin-top: 0.2rem;
   }
 }
 
@@ -155,34 +153,14 @@ textarea {
   grid-area: 6/1/7/1;
   font-size: 0.55rem;
 
-  @include for-desktop-up {
-
+  @include for-tablet-up {
     grid-area: 3/1/4/3;
-    font-size: .75rem;
-    
+    font-size: 0.75rem;
+    align-self: end;
   }
 }
 
-img{
-	width: 25%;
-	height: auto;
+img {
+  width: 25%;
+  height: auto;
 }
-
-.preview::-webkit-scrollbar-track, textarea::-webkit-scrollbar-track {
-  border: 0.01rem solid transparent;
-  background-clip: content-box;
-}
-
-.preview::-webkit-scrollbar, textarea::-webkit-scrollbar {
-  width: 0.2rem;
-  height: 0;
-  
-}
-
-.preview::-webkit-scrollbar-thumb, textarea::-webkit-scrollbar-thumb  {
-
-  border: 1px solid $button-text-color;
-  background: $button-text-color;
-}
-
-

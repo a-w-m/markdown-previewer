@@ -14,7 +14,7 @@ const defaultText = `## Markdown
 
 ## How to Use this Markdown Previewer?
 - Write markdown in this editor and see the html rendered live in the previewer.
-- You can also view the source html by clicking on the drodown menu above the previewer.
+- You can also view the source html by clicking on the dropdown menu above the previewer.
 
 ### A few Markdown Features:
 
@@ -127,10 +127,9 @@ const Header = props =>{
 const Editor = props => {
 	const { value, onChange, className, children } = props;
 	return (
-		<div className={className}>
-			<div>{children}</div>
-			<textarea value={value} onChange={onChange} ></textarea>
-		</div>
+		
+			<textarea value={value} onChange={onChange} className= {className} ></textarea>
+		
 	);
 };
 

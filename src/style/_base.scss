@@ -1,26 +1,37 @@
+/*Media Queries*/
+
 @mixin for-phone-landscape-up {
-	@media (min-width: 560px) and (max-width: 899px) and (orientation: landscape) {
-		@content;
-	}
+  @media (min-width: 560px) and (max-width: 767px) and (orientation: landscape) {
+    @content;
+  }
 }
 
-@mixin for-tablet-up{
-	@media(min-width: 768px) and (max-width: 1023px){
-		@content;
-	}
+@mixin for-large-phone-landscape-up {
+  @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
+    @content;
+  }
 }
 
-@mixin for-desktop-up {
-	@media (min-width: 768px) {
-		@content;
-	}
+@mixin for-tablet-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+
 }
+
+  @mixin for-desktop-up {
+    @media (min-width: 1024px){
+      @content;
+    }
+  }
 
 
 /*Variables*/
 
-$button-bg-color: #FFFFFF;
-$button-text-color: #FF00EE;
-$border-color: #5B5B5B;
-$text-color: #474747;
+$button-bg-color: #ffffff;
+$button-text-color: #ff00ee;
+$border-color: #5b5b5b;
+$editor-text-color: #f2ecff;
+$editor-bg-color: #080808;
+$preview-text-color: #474747;
 $root-font: 16px;
