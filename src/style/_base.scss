@@ -4,8 +4,23 @@
 	}
 }
 
-@mixin for-desktop-up {
-	@media (min-width: 1024px) {
+@mixin for-tablet-up{
+	@media(min-width: 768px) and (max-width: 1023px){
 		@content;
 	}
 }
+
+@mixin for-desktop-up {
+	@media (min-width: 768px) {
+		@content;
+	}
+}
+
+
+/*Variables*/
+
+$button-bg-color: #FFFFFF;
+$button-text-color: #FF00EE;
+$border-color: #5B5B5B;
+$text-color: #474747;
+$root-font: 16px;

@@ -1,17 +1,33 @@
 @mixin Editor {
-	height: 100%;
-	border: 0.01rem solid black;
+  height: 100%;
+  border: 0.01rem solid $border-color;
 }
 
 @mixin Textarea {
-	width: 100%;
-	padding: 0;
-	border-image: none;
-	border-width: 0;
-	border: none;
+  width: 100%;
+  padding: 0;
+  border-image: none;
+  border-width: 0;
+  border: none;
+  resize: none;
+  outline: none;
 }
 
 @mixin Button {
-	width: 3rem;
-	height: 1.5rem;
+  background-color: $button-bg-color;
+  border: 0.05rem solid $border-color;
+  color: $button-text-color;
+  border-radius: .2rem;
+  text-decoration: none;
+  -webkit-appearance: none;
+  width: 3rem;
+  height: 1.5rem;
+}
+
+@mixin Dropdown {
+  height: 1.5rem;
+  background-color: $button-bg-color;
+  color: $button-text-color;
+  border: 0.05rem solid $border-color;
+  border-radius: .2rem;
 }

@@ -4,36 +4,44 @@ import "./App.css";
 import { findByLabelText } from "@testing-library/react";
 import marked, { parser } from "marked";
 
-const defaultText = `# Live Markdown Previewer
- ## Markdown 
- 
- Markdown is a popular [markup language](https://en.wikipedia.org/wiki/Markdown).  
- 
- Simply display inline code: \`console.log(displaying inline code)\`
+const defaultText = `## Markdown
 
- or multi-line code blocks: 
- 
+[Markdown](https://en.wikipedia.org/wiki/Markdown) is a markup language that emphasizes _simplicity_ and _readability_.
+
+> Markdown strives to be readable even as it marks up text.
+> It does so by ditching tags for less weighty markup syntax.
+> This page is a live playground to convert your markdown into html.
+
+## How to Use this Markdown Previewer?
+- Write markdown in this editor and see the html rendered live in the previewer.
+- You can also view the source html by clicking on the drodown menu above the previewer.
+
+### A few Markdown Features:
+
+1. Display Code
+
+	* You can seamlessly display inline code \`console.log(displaying inline code)\`
+	  or multi-line code blocks: 
+  \`\`\`
+  		function square(a) {  
+
+	  		(return a*a) 
+
+	 		}	
  \`\`\`
- function square(a){  
-	 (return a*a)  
-	}	
-\`\`\`
 
- **bold** or _italicize_
+2. Make lists composed of:
 
- > block quote
+	- bullets
+		- indents
+	1. or numbers
 
- Make lists 
-  -bulleted
-    -with indents
+3. You can also embed images:
 
-1. Or numbered
-2. lists
+ 	![alt text](https://cdn4.iconfinder.com/data/icons/logos-and-brands-1/512/205_Markdown_logo_logos-512.png " Markdown logo")
+ 
+_default text in this editor based on [Marked Live Demo](https://marked.js.org/demo/)_`;
 
-You can also embed images:
-
-![alt text](https://cdn4.iconfinder.com/data/icons/logos-and-brands-1/512/205_Markdown_logo_logos-512.png " Markdown logo")
- `;
 
 class App extends Component {
 	constructor(props) {
@@ -77,12 +85,13 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<div class ="title">Markdown Editor</div>
+				<Header className = "header-editor">Markdown Editor</Header>
 				<Button
 					type="button"
 					onClick={this.handleClearPreviewClick}
 					className="clearButton"
 				>Clear</Button>
+				<Header className = "header-preview">Markdown Previewer</Header>
 				<PreviewDropDown
 					value={this.state.displayPreview}
 					onChange={this.handlePreviewDropDownChange}
@@ -108,6 +117,12 @@ class App extends Component {
 		);
 	}
 }
+
+const Header = props =>{
+	const {className, children} = props;
+	return(
+	<div className = {className}>{children}</div>
+	)}
 
 const Editor = props => {
 	const { value, onChange, className, children } = props;
