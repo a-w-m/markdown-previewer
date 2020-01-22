@@ -58,9 +58,22 @@ body {
   }
 }
 
-.header-editor,
+.container-header-editor {
+  grid-area: 1/1/2/2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.header-editor {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
 .header-preview {
-  grid-area: 1/1/2/1;
+  grid-area: 3/1/4/2;
   justify-self: start;
   align-self: end;
   margin-left: 1rem;
@@ -68,9 +81,8 @@ body {
   font-weight: 600;
 }
 @media (min-width: 768px) {
-  .header-editor,
-.header-preview {
-    grid-area: 1/1/2/2;
+  .header-preview {
+    grid-area: 1/2/2/3;
     justify-self: start;
     align-self: end;
     margin-left: 1rem;
@@ -78,13 +90,26 @@ body {
   }
 }
 
-.header-preview {
-  grid-area: 3/1/4/2;
+label {
+  background-color: #ffffff;
+  border: 0.05rem solid #5b5b5b;
+  color: #ff00ee;
+  border-radius: 0.2rem;
+  text-decoration: none;
+  -webkit-appearance: none;
+  width: 3rem;
+  height: 1.5rem;
+  align-self: flex-end;
+  font-size: 0.875rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  width: 5rem;
+  order: 2;
 }
-@media (min-width: 768px) {
-  .header-preview {
-    grid-area: 1/2/2/3;
-  }
+
+input[type=file] {
+  display: none;
 }
 
 .clearButton {
@@ -96,10 +121,7 @@ body {
   -webkit-appearance: none;
   width: 3rem;
   height: 1.5rem;
-  grid-area: 1/1/2/2;
-  justify-self: end;
-  align-self: end;
-  margin-right: 1rem;
+  order: 3;
 }
 @media (min-width: 768px) {
   .clearButton {
@@ -135,22 +157,7 @@ select {
 .fileInput {
   font-size: 0.75rem;
   grid-area: 1/1/2/2;
-  justify-self: end;
-  align-self: end;
-  display: none;
-}
-@media (min-width: 768px) {
-  .fileInput {
-    display: none;
-  }
-}
-@media (min-width: 1024px) {
-  .fileInput {
-    grid-area: 1/1/2/2;
-    justify-self: end;
-    align-self: end;
-    display: none;
-  }
+  margin-left: 2.5rem;
 }
 
 .editor {

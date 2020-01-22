@@ -85,12 +85,15 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
+				<div className = "container-header-editor">
 				<Header className = "header-editor">Markdown Editor</Header>
 				<Button
 					type="button"
 					onClick={this.handleClearPreviewClick}
 					className="clearButton"
 				>Clear</Button>
+				<Input ref={this.fileInput} onChange={this.handleFileInputSubmit} className ="fileInput">Upload File</Input>
+				</div>
 				<Header className = "header-preview">Markdown Previewer</Header>
 				<PreviewDropDown
 					value={this.state.displayPreview}
@@ -110,7 +113,7 @@ class App extends Component {
 					className="preview"
 				/>
 
-				<Input ref={this.fileInput} onChange={this.handleFileInputSubmit} className ="fileInput"/>
+				
 				<div class ="footer">Markdown previewer created by awm</div>
 
 			</div>
@@ -173,7 +176,7 @@ const Button = props => {
 
 const Input = React.forwardRef((props, ref) => (
 	<div className = {props.className}>
-		<label for="file"></label>
+		<label for="file">{props.children}</label>
 		<input type="file" id="file" ref={ref} onChange={props.onChange} />
 	</div>
 ));
