@@ -69,19 +69,40 @@ class App extends Component {
 		this.setState({ markdown: "" });
 	};
 
-	handleFileInputSubmit = event => {
+	handleFileInputSubmit = (event) => {
+		/*event handler for  <input type = "file">, sets state of markdown with value of readFile()*/
+
 		const file = this.fileInput.current.files[0];
+		this.readFile(file).then( (value) => {
 
+			this.setState({markdown: value})
+		})
+		
+		
+		
+
+		
+}
+
+	 readFile = (fileList)=>  {
+		 return new Promise( (resolve, reject) => {
 		let fileReader = new FileReader();
+		console.log("ok")
 
-		fileReader.onload = () => this.setState({ markdown: fileReader.result });
-
+		fileReader.onload = () => resolve(fileReader.result);
+			
+			
+		
 		fileReader.onerror = function() {
-			alert("there was an error reading the file");
+			reject("there was an error reading the file");
 		};
 
-		fileReader.readAsText(file);
-	};
+		fileReader.readAsText(fileList);
+
+	 }) } 
+
+		
+	
 
 	render() {
 		return (
