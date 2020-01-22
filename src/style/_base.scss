@@ -1,28 +1,28 @@
 /*Media Queries*/
-@mixin for-phone-landscape-small {
+@mixin for-small-phone-landscape {
   @media (max-width: 568px) and (orientation: landscape) {
     @content;
   }
 }
-@mixin for-phone-landscape-up {
+@mixin for-medium-phone-landscape {
   @media (min-width: 569px) and (max-width: 767px) and (orientation: landscape) {
     @content;
   }
 }
 
-@mixin for-phone-landscape-keyboard {
+@mixin for-phone-landscape-keyboardOn {
   @media (max-height: 200px) and (orientation: landscape) {
     @content;
   }
 }
 
-@mixin for-large-phone-landscape-up {
+@mixin for-large-phone-landscape {
   @media (min-width: 768px) and (max-width: 899px) and (orientation: landscape) {
     @content;
   }
 }
 
-@mixin for-tablet-up {
+@mixin for-phone-tablet-desktop-up {
   @media (min-width: 560px) {
     @content;
   }

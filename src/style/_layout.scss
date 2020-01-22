@@ -18,25 +18,25 @@ body {
   height: 100%;
   font-size: 0.75rem;
 
-  @include for-tablet-up {
+  @include for-phone-tablet-desktop-up {
     grid-template-rows: 5.5rem 0.95fr auto;
     grid-template-columns: 1fr 1fr;
     font-size: 1rem;
   }
 
-  @include for-large-phone-landscape-up {
+  @include for-large-phone-landscape {
     grid-template-rows: 4rem 0.95fr auto;
   }
 
-  @include for-phone-landscape-up {
+  @include for-medium-phone-landscape {
     grid-template-rows: 2.5rem 0.95fr auto;
   }
 
-  @include for-phone-landscape-small {
+  @include for-small-phone-landscape {
     grid-template-rows: 3rem 0.95fr auto;
   }
 
-  @include for-phone-landscape-keyboard {
+  @include for-phone-landscape-keyboardOn {
     grid-template-rows: 1fr;
   }
 }
@@ -48,18 +48,18 @@ body {
   margin-left: 1rem;
   margin-right: 1rem;
 
-  @include for-phone-landscape-keyboard {
+  @include for-phone-landscape-keyboardOn {
     display: none;
   }
 }
 
-.header-editor {
+.title-editor {
   font-size: 0.95rem;
   font-weight: 600;
   flex-basis: 45%;
   text-align: start;
 
-  @include for-tablet-up {
+  @include for-phone-tablet-desktop-up {
     font-size: 1.25rem;
     flex-basis: 55%;
   }
@@ -68,25 +68,26 @@ body {
     flex-basis: 60%;
   }
   @include for-large-desktop-up {
-    flex-basis: 70%;
+    flex-basis: 75%;
+    
   }
 
-  @include for-large-phone-landscape-up {
+  @include for-large-phone-landscape {
     font-size: 1.1rem;
   }
 
-  @include for-phone-landscape-up {
+  @include for-medium-phone-landscape {
     font-size: 0.95rem;
     flex-basis: 45%;
   }
 
-  @include for-phone-landscape-small {
+  @include for-small-phone-landscape {
     font-size: 0.95rem;
     flex-basis: 55%;
   }
 }
 
-.header-preview {
+.title-preview {
   grid-area: 3/1/4/2;
   justify-self: start;
   align-self: end;
@@ -94,11 +95,11 @@ body {
   font-size: 0.95rem;
   font-weight: 600;
 
-  @include for-phone-landscape-keyboard {
+  @include for-phone-landscape-keyboardOn {
     display: none;
   }
 
-  @include for-tablet-up {
+  @include for-phone-tablet-desktop-up {
     grid-area: 1/2/2/3;
     justify-self: start;
     align-self: end;
@@ -106,15 +107,15 @@ body {
     font-size: 1.25rem;
   }
 
-  @include for-large-phone-landscape-up {
+  @include for-large-phone-landscape {
     font-size: 1.1rem;
   }
 
-  @include for-phone-landscape-up {
+  @include for-medium-phone-landscape {
     font-size: 0.95rem;
   }
 
-  @include for-phone-landscape-small {
+  @include for-small-phone-landscape {
     font-size: 0.95rem;
   }
 }
@@ -129,7 +130,7 @@ label {
   width: 5rem;
   order: 2;
 
-  @include for-phone-landscape-small {
+  @include for-small-phone-landscape {
     width: 3rem;
     font-size: 0.675rem;
   }
@@ -142,7 +143,7 @@ input[type="file"] {
   @include Button;
   order: 3;
 
-  @include for-phone-landscape-small {
+  @include for-small-phone-landscape {
     font-size: 0.675rem;
   }
 }
@@ -152,11 +153,12 @@ input[type="file"] {
   justify-self: end;
   align-self: end;
   margin-right: 1rem;
-  @include for-phone-landscape-keyboard {
+  
+  @include for-phone-landscape-keyboardOn {
     display: none;
   }
 
-  @include for-tablet-up {
+  @include for-phone-tablet-desktop-up {
     grid-area: 1/2/2/3;
     justify-self: end;
     align-self: end;
@@ -168,7 +170,7 @@ input[type="file"] {
 select {
   @include Dropdown;
 
-  @include for-phone-landscape-small {
+  @include for-small-phone-landscape {
     font-size: 0.675rem;
   }
 }
@@ -186,19 +188,29 @@ select {
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 0.2rem;
+  scrollbar-color: $button-text-color $editor-bg-color;
+  scrollbar-width: thin;
 
-  @include for-tablet-up {
+  @include for-phone-tablet-desktop-up {
     grid-area: 2/1/3/2;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 
-  @include for-phone-landscape-keyboard {
+  @include for-desktop-up{
+    font-size: .85rem;
+  }
+
+  @include for-large-desktop-up{
+    font-size: .9rem;
+  }
+
+  @include for-phone-landscape-keyboardOn {
     grid-area: 1/1/2/2;
     font-size: 0.5rem;
     margin-top: 0;
   }
 
-  @include for-phone-landscape-small {
+  @include for-small-phone-landscape {
     font-size: 0.675rem;
   }
 }
@@ -216,18 +228,26 @@ select {
   scrollbar-color: $button-text-color white;
   scrollbar-width: thin;
 
-  @include for-tablet-up {
+  @include for-phone-tablet-desktop-up {
     grid-area: 2/2/3/3;
-    font-size: 0.75rem;
+    font-size: 0.825rem;
   }
 
-  @include for-phone-landscape-keyboard {
+  @include for-desktop-up{
+    font-size: .855rem;
+  }
+
+  @include for-large-desktop-up{
+    font-size: .875rem;
+  }
+
+  @include for-phone-landscape-keyboardOn {
     grid-area: 1/2/2/2;
     font-size: 0.5rem;
     margin-top: 0;
   }
 
-  @include for-phone-landscape-small {
+  @include for-small-phone-landscape {
     font-size: 0.675rem;
   }
 }
@@ -237,17 +257,17 @@ select {
   grid-area: 6/1/7/1;
   font-size: 0.55rem;
 
-  @include for-phone-landscape-keyboard {
+  @include for-phone-landscape-keyboardOn {
     display: none;
   }
 
-  @include for-tablet-up {
+  @include for-phone-tablet-desktop-up {
     grid-area: 3/1/4/3;
     font-size: 0.75rem;
     align-self: end;
   }
 
-  @include for-phone-landscape-up {
+  @include for-medium-phone-landscape {
     align-self: center;
   }
 }

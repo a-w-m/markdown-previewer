@@ -87,7 +87,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<div className = "container-header-editor">
-				<Header className = "header-editor">Markdown Editor</Header>
+				<Header className = "title-editor">Markdown Editor</Header>
 				<Button
 					type="button"
 					onClick={this.handleClearPreviewClick}
@@ -95,7 +95,7 @@ class App extends Component {
 				>Clear</Button>
 				<Input ref={this.fileInput} onChange={this.handleFileInputSubmit} className ="fileInput">Upload File</Input>
 				</div>
-				<Header className = "header-preview">Markdown Previewer</Header>
+				<Header className = "title-preview">Markdown Previewer</Header>
 				<PreviewDropDown
 					value={this.state.displayPreview}
 					onChange={this.handlePreviewDropDownChange}
