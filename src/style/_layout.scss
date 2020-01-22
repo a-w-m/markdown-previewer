@@ -19,7 +19,6 @@ body {
   font-size: 0.75rem;
 
   @include for-tablet-up {
-    display: grid;
     grid-template-rows: 5.5rem 0.95fr auto;
     grid-template-columns: 1fr 1fr;
     font-size: 1rem;
@@ -30,7 +29,15 @@ body {
   }
 
   @include for-phone-landscape-up {
-    grid-template-rows: 3rem 1fr 2.5rem 1fr 0.5rem;
+    grid-template-rows: 2.5rem 0.95fr auto;
+  }
+
+  @include for-phone-landscape-small {
+    grid-template-rows: 3rem 0.95fr auto;
+  }
+
+  @include for-phone-landscape-keyboard {
+    grid-template-rows: 1fr;
   }
 }
 .container-header-editor {
@@ -40,11 +47,43 @@ body {
   align-items: flex-end;
   margin-left: 1rem;
   margin-right: 1rem;
+
+  @include for-phone-landscape-keyboard {
+    display: none;
+  }
 }
 
 .header-editor {
   font-size: 0.95rem;
   font-weight: 600;
+  flex-basis: 45%;
+  text-align: start;
+
+  @include for-tablet-up {
+    font-size: 1.25rem;
+    flex-basis: 55%;
+  }
+
+  @include for-desktop-up {
+    flex-basis: 60%;
+  }
+  @include for-large-desktop-up {
+    flex-basis: 70%;
+  }
+
+  @include for-large-phone-landscape-up {
+    font-size: 1.1rem;
+  }
+
+  @include for-phone-landscape-up {
+    font-size: 0.95rem;
+    flex-basis: 45%;
+  }
+
+  @include for-phone-landscape-small {
+    font-size: 0.95rem;
+    flex-basis: 55%;
+  }
 }
 
 .header-preview {
@@ -55,6 +94,10 @@ body {
   font-size: 0.95rem;
   font-weight: 600;
 
+  @include for-phone-landscape-keyboard {
+    display: none;
+  }
+
   @include for-tablet-up {
     grid-area: 1/2/2/3;
     justify-self: start;
@@ -62,28 +105,45 @@ body {
     margin-left: 1rem;
     font-size: 1.25rem;
   }
+
+  @include for-large-phone-landscape-up {
+    font-size: 1.1rem;
+  }
+
+  @include for-phone-landscape-up {
+    font-size: 0.95rem;
+  }
+
+  @include for-phone-landscape-small {
+    font-size: 0.95rem;
+  }
 }
 
-label{
-@include Button;
-align-self: flex-end;
-font-size: .875rem;
-font-weight: 400;
-display: flex;
-align-items: center;
-width: 5rem;
-order: 2;
+label {
+  @include Button;
+  font-size: 0.875rem;
+  font-weight: 400;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  width: 5rem;
+  order: 2;
+
+  @include for-phone-landscape-small {
+    width: 3rem;
+    font-size: 0.675rem;
+  }
 }
-input[type ="file"]{
-	display:none;
+input[type="file"] {
+  display: none;
 }
 
 .clearButton {
   @include Button;
   order: 3;
 
-  @include for-tablet-up {
-    margin-bottom: 0.1rem;
+  @include for-phone-landscape-small {
+    font-size: 0.675rem;
   }
 }
 
@@ -92,6 +152,9 @@ input[type ="file"]{
   justify-self: end;
   align-self: end;
   margin-right: 1rem;
+  @include for-phone-landscape-keyboard {
+    display: none;
+  }
 
   @include for-tablet-up {
     grid-area: 1/2/2/3;
@@ -104,13 +167,15 @@ input[type ="file"]{
 
 select {
   @include Dropdown;
-  margin-bottom: 0.1rem;
+
+  @include for-phone-landscape-small {
+    font-size: 0.675rem;
+  }
 }
 
 .fileInput {
   font-size: 0.75rem;
   grid-area: 1/1/2/2;
-  margin-left: 2.5rem;
 }
 
 .editor {
@@ -124,7 +189,17 @@ select {
 
   @include for-tablet-up {
     grid-area: 2/1/3/2;
-    font-size: 1rem;
+    font-size: 0.75rem;
+  }
+
+  @include for-phone-landscape-keyboard {
+    grid-area: 1/1/2/2;
+    font-size: 0.5rem;
+    margin-top: 0;
+  }
+
+  @include for-phone-landscape-small {
+    font-size: 0.675rem;
   }
 }
 
@@ -136,7 +211,7 @@ select {
   overflow: scroll;
   margin-right: 1rem;
   margin-left: 1rem;
-  margin-top: 0.1rem;
+  margin-top: 0.2rem;
   padding: 0 0.25rem;
   scrollbar-color: $button-text-color white;
   scrollbar-width: thin;
@@ -144,7 +219,16 @@ select {
   @include for-tablet-up {
     grid-area: 2/2/3/3;
     font-size: 0.75rem;
-    margin-top: 0.2rem;
+  }
+
+  @include for-phone-landscape-keyboard {
+    grid-area: 1/2/2/2;
+    font-size: 0.5rem;
+    margin-top: 0;
+  }
+
+  @include for-phone-landscape-small {
+    font-size: 0.675rem;
   }
 }
 
@@ -153,14 +237,22 @@ select {
   grid-area: 6/1/7/1;
   font-size: 0.55rem;
 
+  @include for-phone-landscape-keyboard {
+    display: none;
+  }
+
   @include for-tablet-up {
     grid-area: 3/1/4/3;
     font-size: 0.75rem;
     align-self: end;
   }
+
+  @include for-phone-landscape-up {
+    align-self: center;
+  }
 }
 
 img {
-  width: 25%;
+  width: 20%;
   height: auto;
 }

@@ -27,6 +27,18 @@
   color: $button-text-color;
   border: 0.05rem solid $border-color;
   border-radius: 0.2rem;
+  
+}
+
+blockquote{
+	
+	border-left: .25rem solid #8685EF;
+	padding-left: .5rem;
+}
+
+code{
+	white-space: pre;
+	background: #FFEFFF;
 }
 
 /*Scrollbar for chrome and safari*/

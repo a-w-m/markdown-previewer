@@ -1,7 +1,17 @@
 /*Media Queries*/
-
+@mixin for-phone-landscape-small {
+  @media (max-width: 568px) and (orientation: landscape) {
+    @content;
+  }
+}
 @mixin for-phone-landscape-up {
-  @media (min-width: 560px) and (max-width: 767px) and (orientation: landscape) {
+  @media (min-width: 569px) and (max-width: 767px) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin for-phone-landscape-keyboard {
+  @media (max-height: 200px) and (orientation: landscape) {
     @content;
   }
 }
@@ -13,18 +23,22 @@
 }
 
 @mixin for-tablet-up {
-  @media (min-width: 768px) {
+  @media (min-width: 560px) {
     @content;
   }
-
 }
 
-  @mixin for-desktop-up {
-    @media (min-width: 1024px){
-      @content;
-    }
+@mixin for-desktop-up {
+  @media (min-width: 1024px) {
+    @content;
   }
+}
 
+@mixin for-large-desktop-up {
+  @media (min-width: 1366px) {
+    @content;
+  }
+}
 
 /*Variables*/
 

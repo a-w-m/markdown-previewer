@@ -9,18 +9,19 @@ const defaultText = `## Markdown
 [Markdown](https://en.wikipedia.org/wiki/Markdown) is a markup language that emphasizes _simplicity_ and _readability_.
 
 > Markdown strives to be readable even as it marks up text.
-> It does so by ditching tags for less weighty markup syntax.
+> It does so by ditching tags for less intrusive markup syntax.
 > This page is a live playground to convert your markdown into html.
 
 ## How to Use this Markdown Previewer?
-- Write markdown in this editor and see the html rendered live in the previewer.
+- Write markdown in the editor and see the html rendered live in the previewer.
+- Have a markdown file you want to preview? Click 'upload file' to upload its contents to the editor.
 - You can also view the source html by clicking on the dropdown menu above the previewer.
 
-### A few Markdown Features:
+## Some Markdown Features:
 
 1. Display Code
 
-	* You can seamlessly display inline code \`console.log(displaying inline code)\`
+	* You can seamlessly \`console.log('display inline code')\`
 	  or multi-line code blocks: 
   \`\`\`
   		function square(a) {  
