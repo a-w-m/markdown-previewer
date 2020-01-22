@@ -43,164 +43,157 @@ const defaultText = `## Markdown
  
 _default text in this editor based on [Marked Live Demo](https://marked.js.org/demo/)_`;
 
-
 class App extends Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			markdown: defaultText,
-			displayPreview: "live"
-		};
+    this.state = {
+      markdown: defaultText,
+      displayPreview: "live"
+    };
 
-		this.fileInput = React.createRef();
-	}
+    this.fileInput = React.createRef();
+  }
 
-	handleEditorChange = event => {
-		this.setState({ markdown: event.target.value });
-	};
+  handleEditorChange = event => {
+    this.setState({ markdown: event.target.value });
+  };
 
-	handlePreviewDropDownChange = event => {
-		this.setState({ displayPreview: event.target.value });
-		console.log("work");
-	};
+  handlePreviewDropDownChange = event => {
+    this.setState({ displayPreview: event.target.value });
+    console.log("work");
+  };
 
-	handleClearPreviewClick = event => {
-		this.setState({ markdown: "" });
-	};
+  handleClearPreviewClick = event => {
+    this.setState({ markdown: "" });
+  };
 
-	handleFileInputSubmit = (event) => {
-		/*event handler for  <input type = "file">, sets state of markdown with value of readFile()*/
+  handleFileInputSubmit = async event => {
+    /*event handler for  <input type = "file">, sets state of markdown with value of readFile()*/
 
-		const file = this.fileInput.current.files[0];
-		this.readFile(file).then( (value) => {
+    const file = this.fileInput.current.files[0];
+    let readResult = await this.readFile(file);
+    this.setState({ markdown: readResult });
+  };
 
-			this.setState({markdown: value})
-		})
-		
-		
-		
+  readFile = fileList => {
+    return new Promise((resolve, reject) => {
+      let fileReader = new FileReader();
+      console.log("ok");
 
-		
+      fileReader.onload = () => resolve(fileReader.result);
+
+      fileReader.onerror = function() {
+        reject("there was an error reading the file");
+      };
+
+      fileReader.readAsText(fileList);
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <div className="container-header-editor">
+          <Header className="title-editor">Markdown Editor</Header>
+          <Button
+            type="button"
+            onClick={this.handleClearPreviewClick}
+            className="clearButton"
+          >
+            Clear
+          </Button>
+          <Input
+            ref={this.fileInput}
+            onChange={this.handleFileInputSubmit}
+            className="fileInput"
+          >
+            Upload File
+          </Input>
+        </div>
+        <Header className="title-preview">Markdown Previewer</Header>
+        <PreviewDropDown
+          value={this.state.displayPreview}
+          onChange={this.handlePreviewDropDownChange}
+          type="select"
+          className="previewDropdown"
+        ></PreviewDropDown>
+        <Editor
+          value={this.state.markdown}
+          onChange={this.handleEditorChange}
+          className="editor"
+        ></Editor>
+        <Preview
+          displayPreview={this.state.displayPreview}
+          parsedHTML={this.state.markdown}
+          className="preview"
+        />
+
+        <div class="footer">Markdown previewer created by awm</div>
+      </div>
+    );
+  }
 }
 
-	 readFile = (fileList)=>  {
-		 return new Promise( (resolve, reject) => {
-		let fileReader = new FileReader();
-		console.log("ok")
-
-		fileReader.onload = () => resolve(fileReader.result);
-			
-			
-		
-		fileReader.onerror = function() {
-			reject("there was an error reading the file");
-		};
-
-		fileReader.readAsText(fileList);
-
-	 }) } 
-
-		
-	
-
-	render() {
-		return (
-			<div className="App">
-				<div className = "container-header-editor">
-				<Header className = "title-editor">Markdown Editor</Header>
-				<Button
-					type="button"
-					onClick={this.handleClearPreviewClick}
-					className="clearButton"
-				>Clear</Button>
-				<Input ref={this.fileInput} onChange={this.handleFileInputSubmit} className ="fileInput">Upload File</Input>
-				</div>
-				<Header className = "title-preview">Markdown Previewer</Header>
-				<PreviewDropDown
-					value={this.state.displayPreview}
-					onChange={this.handlePreviewDropDownChange}
-					type="select"
-					className="previewDropdown"
-				></PreviewDropDown>
-				<Editor
-					value={this.state.markdown}
-					onChange={this.handleEditorChange}
-					className = "editor"
-				>
-				</Editor>
-				<Preview
-					displayPreview={this.state.displayPreview}
-					parsedHTML={this.state.markdown}
-					className="preview"
-				/>
-
-				
-				<div class ="footer">Markdown previewer created by awm</div>
-
-			</div>
-		);
-	}
-}
-
-const Header = props =>{
-	const {className, children} = props;
-	return(
-	<div className = {className}>{children}</div>
-	)}
+const Header = props => {
+  const { className, children } = props;
+  return <div className={className}>{children}</div>;
+};
 
 const Editor = props => {
-	const { value, onChange, className, children } = props;
-	return (
-		
-			<textarea value={value} onChange={onChange} className= {className} ></textarea>
-		
-	);
+  const { value, onChange, className, children } = props;
+  return (
+    <textarea
+      value={value}
+      onChange={onChange}
+      className={className}
+    ></textarea>
+  );
 };
 
 const PreviewDropDown = props => {
-	const { value, onChange, className } = props;
-	return (
-		<form className={className}>
-			<select value={value} onChange={onChange} >
-				<option value="live">Live Preview</option>
-				<option value="html">HTML Source</option>
-			</select>
-		</form>
-	);
+  const { value, onChange, className } = props;
+  return (
+    <form className={className}>
+      <select value={value} onChange={onChange}>
+        <option value="live">Live Preview</option>
+        <option value="html">HTML Source</option>
+      </select>
+    </form>
+  );
 };
 
 const Preview = props => {
-	const { displayPreview, parsedHTML, className } = props;
-	return (
-		<div className={className}>
-			{displayPreview == "live" ? (
-				<div 
-					dangerouslySetInnerHTML={{
-						__html: marked(parsedHTML, { breaks: "true" })
-					}}
-				/>
-			) : (
-				<div >{marked(parsedHTML, { breaks: "true" })}</div>
-			)}
-		</div>
-	);
+  const { displayPreview, parsedHTML, className } = props;
+  return (
+    <div className={className}>
+      {displayPreview == "live" ? (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: marked(parsedHTML, { breaks: "true" })
+          }}
+        />
+      ) : (
+        <div>{marked(parsedHTML, { breaks: "true" })}</div>
+      )}
+    </div>
+  );
 };
 
 const Button = props => {
-	const { type, onClick, className, children } = props;
-	return (
-		<button type={type} onClick={onClick} className={className}>
-			{children}
-		</button>
-	);
+  const { type, onClick, className, children } = props;
+  return (
+    <button type={type} onClick={onClick} className={className}>
+      {children}
+    </button>
+  );
 };
 
 const Input = React.forwardRef((props, ref) => (
-	<div className = {props.className}>
-		<label for="file">{props.children}</label>
-		<input type="file" id="file" ref={ref} onChange={props.onChange} />
-	</div>
+  <div className={props.className}>
+    <label for="file">{props.children}</label>
+    <input type="file" id="file" ref={ref} onChange={props.onChange} />
+  </div>
 ));
 
 export default App;
