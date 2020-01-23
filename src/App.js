@@ -77,6 +77,8 @@ class App extends Component {
   };
 
   readFile = fileList => {
+    /* returns a promise of a string of the file's text"*/
+
     return new Promise((resolve, reject) => {
       let fileReader = new FileReader();
       console.log("ok");
@@ -166,6 +168,7 @@ const PreviewDropDown = props => {
 const Preview = props => {
   const { displayPreview, parsedHTML, className } = props;
   return (
+    /*utilizes conitional rendering to switch between rendered html and raw html*/
     <div className={className}>
       {displayPreview == "live" ? (
         <div
