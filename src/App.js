@@ -61,7 +61,7 @@ class App extends Component {
 
   handlePreviewDropDownChange = event => {
     this.setState({ displayPreview: event.target.value });
-    console.log("work");
+   
   };
 
   handleClearPreviewClick = event => {
