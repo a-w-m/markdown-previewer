@@ -81,7 +81,6 @@ class App extends Component {
 
     return new Promise((resolve, reject) => {
       let fileReader = new FileReader();
-      console.log("ok");
 
       fileReader.onload = () => resolve(fileReader.result);
 
