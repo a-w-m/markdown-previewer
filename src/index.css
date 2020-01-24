@@ -1,13 +1,28 @@
 /*Media Queries*/
 /*Variables*/
+button:active {
+  transform: translateY(-2px);
+  opacity: 0.5;
+}
+
+label[for=file]:active {
+  transform: translateY(-2px);
+  opacity: 0.5;
+}
+
+select:active {
+  transform: translateY(-2px);
+  opacity: 0.5;
+}
+
 blockquote {
-  border-left: 0.25rem solid #8685ef;
+  border-left: 0.25rem solid #8685EF;
   padding-left: 0.5rem;
 }
 
 code {
   white-space: pre;
-  background: #ffefff;
+  background: #FFEFFF;
 }
 
 /*Scrollbar for chrome and safari*/
@@ -193,7 +208,7 @@ label {
   }
 }
 
-input[type="file"] {
+input[type=file] {
   display: none;
 }
 
